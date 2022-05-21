@@ -12,21 +12,21 @@ class CNN(torch.nn.Module):
         # 32 channels of 192*256
         self.layer1 = torch.nn.Sequential(
             torch.nn.Conv2d(3, 32, 3, 1, 1),
-            torch.nn.BatchNorm2d(8),
+            torch.nn.BatchNorm2d(32),
             torch.nn.ReLU(),
-            torch.nn.MaxPool2d(2, 2)
+            torch.nn.MaxPool2d(2, 2),
         )
 
         # 64 channels of 96*128
         self.layer2 = torch.nn.Sequential(
             torch.nn.Conv2d(32, 64, 3, 1, 1),
-            torch.nn.BatchNorm2d(8),
+            torch.nn.BatchNorm2d(64),
             torch.nn.ReLU(),
-            torch.nn.MaxPool2d(2, 2)
+            torch.nn.MaxPool2d(2, 2),
         )
 
         # 64*96*128 => 6 classes
-        self.fc1 = torch.nn.Linear(64*96*128, 128)
+        self.fc1 = torch.nn.Linear(64 * 96 * 128, 128)
         self.drop = torch.nn.Dropout(0.25)
         self.fc2 = torch.nn.Linear(128, 6)
 
