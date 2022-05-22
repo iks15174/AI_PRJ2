@@ -7,3 +7,4 @@
 3. 모델이 깊어질 경우 gradient vanishing을 막을 수 있는 방법을 적용해 보자
    - L2 regulation
    - Batch Normalization
+4. 적절한 filter size 선택하기
