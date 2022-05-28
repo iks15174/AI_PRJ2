@@ -167,3 +167,12 @@ validation 결과가 수렴하지 않고 너무 튀는게 제일 문제. 단적�
 
 - pretrain 모델 적용
   - 이미지 데이터의 일반적인 특징조차도 학습을 제대로 못 해서 너무 튀는 것일 가능성도 큼
+
+### 2022-05-28
+
+1. ALEXNET을 돌렸을 때
+   `WeightedRandomSampler`를 없애니 train data에 대해 overfiiting 하는 현상 발생. validation의 정확도는 70 부근에서 진폭을 그림. valid하지 않다는걸 의미. epochs는 20이 적절할 듯
+
+2. ALEXNET epoch 20에서도 validation이 좀 더 좋아질 여지가 있어보인다. validation이 70 후반까지 증가한다. ALEXNET를 epoch 40 돌렸을 때, validation이 최대 80까지 증가하는 추세를 보이나 여전히 심하게 진동한다. 진동을 해결할 필요가 있다.
+
+3. Resnet으로 train data 중 80%를 train data, 20%를 valid data로 random하게 뽑아 사용하면 valid 정확도가 70 부근에서 진폭을 그린다.
