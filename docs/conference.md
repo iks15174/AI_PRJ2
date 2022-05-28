@@ -176,3 +176,5 @@ validation 결과가 수렴하지 않고 너무 튀는게 제일 문제. 단적�
 2. ALEXNET epoch 20에서도 validation이 좀 더 좋아질 여지가 있어보인다. validation이 70 후반까지 증가한다. ALEXNET를 epoch 40 돌렸을 때, validation이 최대 80까지 증가하는 추세를 보이나 여전히 심하게 진동한다. 진동을 해결할 필요가 있다.
 
 3. Resnet으로 train data 중 80%를 train data, 20%를 valid data로 random하게 뽑아 사용하면 valid 정확도가 70 부근에서 진폭을 그린다.
+
+4. pretrained된 Alexnet의 출력 class num만 바꿔고 학습시킨 결과, train, validation 정확도가 안정적으로 나오는 것을 확인 -> 모델보다 데이터의 갯수에 문제가 있던 것으로 생각. 일정의 transfer learning이다.
