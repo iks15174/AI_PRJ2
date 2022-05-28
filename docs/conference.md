@@ -152,3 +152,18 @@ Accuracy for class: paper is 78.3 %
 Accuracy for class: plastic is 59.0 %
 Accuracy for class: trash is 35.3 %  ```
 ````
+
+### 2022-05-27
+
+validation 결과가 수렴하지 않고 너무 튀는게 제일 문제. 단적으로 말해 모델 성능과 무관하게 학습 그래프가 전혀 예쁘지가 않다.. 결과의 설득력 문제
+
+다만 validation 성능이 가장 좋았던 모델을 선택해 test에 대해 돌려보면 최대 정확도 80% 근처까지 나옴
+
+더 시도해보아야 할 것:
+
+- overfit 막기 위해 앙상블 적용
+
+  - 제일 유의미할 것 같은 시도는 trash 클래스 이진분류 모델 만들고 먼저 적용하기
+
+- pretrain 모델 적용
+  - 이미지 데이터의 일반적인 특징조차도 학습을 제대로 못 해서 너무 튀는 것일 가능성도 큼
