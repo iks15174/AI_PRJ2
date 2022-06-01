@@ -2,3 +2,9 @@ __pycache__
 data
 model.pt
 data_backup
+binary_data
+4class_data1
+4class_data2
+4class_data_t
+best_model.pt
+
