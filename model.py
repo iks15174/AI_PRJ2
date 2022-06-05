@@ -186,7 +186,7 @@ PretrainedAlexnet_binary.classifier[-1] = torch.nn.Linear(4096, 2)
 
 PretrainedResnet = models.resnet18(pretrained=True)
 num_ftrs = PretrainedResnet.fc.in_features
-PretrainedResnet.fc = torch.nn.Linear(num_ftrs, 5)
+PretrainedResnet.fc = torch.nn.Linear(num_ftrs, 6)
 
 PretrainedResnet_binary = models.resnet18(pretrained=True)
 num_ftrs = PretrainedResnet_binary.fc.in_features
