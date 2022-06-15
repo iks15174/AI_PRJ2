@@ -2,7 +2,11 @@ import torch
 from torch import nn
 import torchvision.models as models
 
+# 프로젝트에서 사용한 모든 모델을 모아놓은 파일이다.
 
+# 직접 설계한 CNN모델이다.
+# 다른 모델과는 다르게 input_size가 227이다.
+# 6개의 class로 분리하는 모델이다.
 class CNN(torch.nn.Module):
     def __init__(self):
         super(CNN, self).__init__()
@@ -76,6 +80,8 @@ class CNN(torch.nn.Module):
         return out
 
 
+# Resnet 모델을 위한 클래스이다.
+# Resnet 모델에서 residual block을 의미한다.
 class BasicBlock(nn.Module):
     expansion = 1
 
@@ -132,6 +138,9 @@ class BasicBlock(nn.Module):
         return x
 
 
+# 직접 설계한 CNN모델이다.
+# input_size는 224이다. residual block을 위해 위에서 구현한 BasicBlock을 사용한다.
+# 6개의 class로 분리하는 모델이다.
 class ResNet(nn.Module):
     def __init__(self, block, num_block, num_classes=6):
         super().__init__()
@@ -178,16 +187,28 @@ class ResNet(nn.Module):
         return x
 
 
+# pretrained된 alexnet이다.
+# input_size는 224이다.
+# 6개의 class로 분리하는 모델이다.
 PretrainedAlexnet = models.alexnet(pretrained=True)
 PretrainedAlexnet.classifier[-1] = torch.nn.Linear(4096, 6)
 
+# pretrained된 alexnet이다.
+# input_size는 224이다.
+# 2개의 class로 분리하는 모델이다.
 PretrainedAlexnet_binary = models.alexnet(pretrained=True)
 PretrainedAlexnet_binary.classifier[-1] = torch.nn.Linear(4096, 2)
 
+# pretrained된 resnet이다.
+# input_size는 224이다.
+# 6개의 class로 분리하는 모델이다
 PretrainedResnet = models.resnet18(pretrained=True)
 num_ftrs = PretrainedResnet.fc.in_features
 PretrainedResnet.fc = torch.nn.Linear(num_ftrs, 6)
 
+# pretrained된 resnet이다.
+# input_size는 224이다.
+# 2개의 class로 분리하는 모델이다
 PretrainedResnet_binary = models.resnet18(pretrained=True)
 num_ftrs = PretrainedResnet_binary.fc.in_features
 PretrainedResnet_binary.fc = torch.nn.Linear(num_ftrs, 2)
